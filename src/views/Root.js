@@ -5,7 +5,7 @@ import { GlobalStyle } from 'assets/styles/globalStyles';
 import { theme } from 'assets/styles/theme';
 
 const Wrapper = styled.div`
-  background-color: #f7f8fa;
+  background-color: ${({ theme }) => theme.colors.lightGrey};
   display: flex;
   justify-content: center;
   align-items: center;
