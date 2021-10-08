@@ -1,7 +1,8 @@
 import UsersList from 'components/organisms/UsersList/UsersList';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 
 import { GlobalStyle } from 'assets/styles/globalStyles';
+import { theme } from 'assets/styles/theme';
 
 const Wrapper = styled.div`
   background-color: #f7f8fa;
@@ -14,12 +15,12 @@ const Wrapper = styled.div`
 
 function Root() {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Wrapper>
         <UsersList />
       </Wrapper>
-    </>
+    </ThemeProvider>
   );
 }
 
