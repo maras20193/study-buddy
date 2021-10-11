@@ -1,26 +1,32 @@
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 import UsersList from 'components/organisms/UsersList/UsersList';
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
+import MainTamplate from 'components/templates/MainTamplate/MainTamplate';
+import { Wrapper } from './Root.styles';
 
 import { GlobalStyle } from 'assets/styles/globalStyles';
 import { theme } from 'assets/styles/theme';
 
-const Wrapper = styled.div`
-  background-color: ${({ theme }) => theme.colors.lightGrey};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100vh;
-`;
-
 function Root() {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Wrapper>
-        <UsersList />
-      </Wrapper>
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <MainTamplate>
+          <Wrapper>
+            <Switch>
+              <Route>
+                <UsersList path="/" />
+              </Route>
+              <Route>
+                <UsersList path="/add-user" />
+              </Route>
+            </Switch>
+          </Wrapper>
+        </MainTamplate>
+      </ThemeProvider>
+    </Router>
   );
 }
 

@@ -1,14 +1,18 @@
-import React from 'react';
+import styled from 'styled-components';
 
-import { StyledButton } from './Button.styles';
-import { ReactComponent as DelateIcon } from 'assets/icons/delete-icon.svg';
+export const Button = styled.button`
+  margin: 15px 0;
+  padding: 8px 20px;
+  font-size: ${({ theme }) => theme.fontSize.m};
+  background-color: ${({ theme }) => theme.colors.lightPurple};
+  border-radius: 20px;
+  border: none;
+  font-weight: bold;
+  color: ${({ theme }) => theme.colors.darkGrey};
+  cursor: pointer;
+  transition: 0.3s;
 
-const Button = (props) => {
-  return (
-    <StyledButton {...props}>
-      <DelateIcon />
-    </StyledButton>
-  );
-};
-
-export default Button;
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.darkPurple};
+  }
+`;

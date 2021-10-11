@@ -20,6 +20,7 @@ export const StyledInfo = styled.div`
   p {
     color: ${({ theme }) => theme.colors.darkGrey};
     margin: 0;
+    text-align: left;
   }
 
   p:first-child {
@@ -29,7 +30,6 @@ export const StyledInfo = styled.div`
 
   p:last-child {
     font-size: ${({ theme }) => theme.fontSize.m};
-    text-align: left;
   }
 `;
 
