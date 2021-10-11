@@ -29,6 +29,7 @@ export const StyledInfo = styled.div`
 
   p:last-child {
     font-size: ${({ theme }) => theme.fontSize.m};
+    text-align: left;
   }
 `;
 

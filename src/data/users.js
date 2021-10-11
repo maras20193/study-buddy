@@ -20,6 +20,7 @@ export const users = [
     average: '4.5',
   },
   {
-    name: 'testtttttttttt Nikt',
+    name: 'MArio MArio',
+    average: '3.9',
   },
 ];
