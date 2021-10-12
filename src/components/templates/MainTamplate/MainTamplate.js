@@ -1,5 +1,5 @@
 import React from 'react';
-import Nav from 'components/molecules/Nav/Nav';
+import Nav from 'components/organisms/Nav/Nav';
 import { Wrapper } from './MainTamplate.styles';
 
 const MainTamplate = ({ children }) => {

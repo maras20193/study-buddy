@@ -18,7 +18,7 @@ function Root() {
           <Wrapper>
             <Switch>
               <Route>
-                <UsersList path="/" />
+                <UsersList exact path="/" />
               </Route>
               <Route>
                 <Dashboard path="/add-user" />
