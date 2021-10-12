@@ -8,6 +8,7 @@ import Loader from 'react-loader-spinner';
 import { theme } from 'assets/styles/theme';
 import FormField from 'components/molecules/FormField/FormField';
 import { Button } from 'components/atoms/Button/Button';
+import { ViewWrapper } from 'components/molecules/ViewWrapper/ViewWrapper';
 
 const mockAPI = (succes) => {
   return new Promise((resolve, reject) => {
@@ -99,7 +100,7 @@ const UsersList = () => {
         />
         <Button type="submit">Add</Button>
       </Wrapper> */}
-      <Wrapper>
+      <ViewWrapper>
         <StyledTitle>Students list</StyledTitle>
         <StyledList>
           {isLoading && (
@@ -119,7 +120,7 @@ const UsersList = () => {
             />
           ))}
         </StyledList>
-      </Wrapper>
+      </ViewWrapper>
     </>
   );
 };

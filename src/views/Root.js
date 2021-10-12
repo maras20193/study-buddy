@@ -4,6 +4,7 @@ import UsersList from 'components/organisms/UsersList/UsersList';
 import { ThemeProvider } from 'styled-components';
 import MainTamplate from 'components/templates/MainTamplate/MainTamplate';
 import { Wrapper } from './Root.styles';
+import Dashboard from './Dashboard';
 
 import { GlobalStyle } from 'assets/styles/globalStyles';
 import { theme } from 'assets/styles/theme';
@@ -20,7 +21,7 @@ function Root() {
                 <UsersList path="/" />
               </Route>
               <Route>
-                <UsersList path="/add-user" />
+                <Dashboard path="/add-user" />
               </Route>
             </Switch>
           </Wrapper>
