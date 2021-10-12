@@ -19,7 +19,7 @@ const AddUser = () => {
 
   const { handleAddUser } = useUsers();
 
-  const history = useHistory();
+  // const history = useHistory();
 
   const handleInputChange = (e) => {
     setFormValues({
@@ -32,7 +32,7 @@ const AddUser = () => {
     e.preventDefault();
     handleAddUser(formValues);
     setFormValues(initialFormValues);
-    history.push('/');
+    // history.push('/');
   };
   return (
     <ViewWrapper as="form" onSubmit={handleSubmit}>
@@ -48,7 +48,6 @@ const AddUser = () => {
         label="Attendence"
         name="attendence"
         id="attendence"
-        type="number"
         value={formValues.attendence}
         onChange={handleInputChange}
       />
@@ -56,7 +55,6 @@ const AddUser = () => {
         label="Average"
         name="average"
         id="average"
-        type="number"
         value={formValues.average}
         onChange={handleInputChange}
       />

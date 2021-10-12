@@ -21,7 +21,7 @@ export const UsersContext = createContext({
 });
 
 const UsersProvider = ({ children }) => {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState(usersData);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
