@@ -1,5 +1,7 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 import { Button } from 'components/atoms/Button/Button';
-import React from 'react';
 import {
   NewsWrapper,
   NewsSectionHeader,
@@ -7,50 +9,73 @@ import {
   TitleWrapper,
   ContentWrapper,
 } from './NewsSection.styles';
+import StyledLoader from 'components/atoms/Loader/Loader';
 
-const data = [
-  {
-    title: 'New computers at school',
-    category: 'Tech news',
-    content:
-      "Lorem Ipsum is simply dummy text of the printing and typesettin industry. Lorem Ipsum has been the in Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type a",
-    image: null,
-  },
-  {
-    title: 'New computers at school2 la lalallalal',
-    category: 'Tech news',
-    content:
-      "Lorem Ipsum is simply dummy text of the printing and typesettin industry. Lorem Ipsum has been the in Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type a",
-    image: 'https://unsplash.it/500/400',
-  },
-  {
-    title: 'New computers at school3',
-    category: 'Tech news',
-    content:
-      "Lorem Ipsum is simply dummy text of the printing and typesettin industry. Lorem Ipsum has been the in Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type a",
-    image: null,
-  },
-];
+export const query = `
+{
+  allArticles {
+    id
+    title
+    category
+    content
+    image {
+      url
+    }
+  }
+}
+`;
+
+const API = 'd0fdd62312bf29187e1c59a7c9af10';
 
 const NewsSection = () => {
+  const [articles, setArticles] = useState([]);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    axios
+      .post(
+        'https://graphql.datocms.com/',
+        {
+          query,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${process.env.REACT_APP_DATOCMS_TOKEN}`,
+          },
+        }
+      )
+      .then(({ data: { data } }) => {
+        setArticles(data.allArticles);
+      })
+      .catch(() => {
+        setError(`Sorry, we couldn't load articles for you`);
+      });
+  }, []);
+
   return (
     <NewsWrapper>
       <NewsSectionHeader>University news feed</NewsSectionHeader>
-      {data.map(({ title, category, content, image }) => {
-        return (
-          <ArticleWrapper key={title}>
-            <TitleWrapper>
-              <h3>{title}</h3>
-              <p>{category}</p>
-            </TitleWrapper>
-            <ContentWrapper>
-              <p>{content}</p>
-              {image ? <img src={image} alt="article" /> : null}
-            </ContentWrapper>
-            <Button isBig>Read more</Button>
-          </ArticleWrapper>
-        );
-      })}
+      {articles.length > 0 ? (
+        articles.map(({ title, category, content, image }) => {
+          return (
+            <ArticleWrapper key={title}>
+              <TitleWrapper>
+                <h3>{title}</h3>
+                <p>{category}</p>
+              </TitleWrapper>
+              <ContentWrapper>
+                <p>{content}</p>
+                {image ? <img src={image.url} alt="article" /> : null}
+              </ContentWrapper>
+              <Button isBig>Read more</Button>
+            </ArticleWrapper>
+          );
+        })
+      ) : error ? (
+        <NewsSectionHeader>{error}</NewsSectionHeader>
+      ) : (
+        <StyledLoader />
+      )}
     </NewsWrapper>
   );
 };
