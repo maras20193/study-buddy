@@ -25,8 +25,6 @@ export const query = `
 }
 `;
 
-const API = 'd0fdd62312bf29187e1c59a7c9af10';
-
 const NewsSection = () => {
   const [articles, setArticles] = useState([]);
   const [error, setError] = useState('');
@@ -56,9 +54,9 @@ const NewsSection = () => {
     <NewsWrapper>
       <NewsSectionHeader>University news feed</NewsSectionHeader>
       {articles.length > 0 ? (
-        articles.map(({ title, category, content, image }) => {
+        articles.map(({ id, title, category, content, image }) => {
           return (
-            <ArticleWrapper key={title}>
+            <ArticleWrapper key={id}>
               <TitleWrapper>
                 <h3>{title}</h3>
                 <p>{category}</p>

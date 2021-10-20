@@ -46,9 +46,18 @@ export const TitleWrapper = styled.div`
 export const ContentWrapper = styled.div`
   display: flex;
 
+  @media (max-width: 1400px) {
+    flex-direction: column;
+  }
+
   img {
     margin-left: 25px;
-    max-width: 220px;
+    max-width: 50%;
     object-fit: cover;
+
+    @media (max-width: 1400px) {
+      max-width: 100%;
+      margin-left: 0;
+    }
   }
 `;
