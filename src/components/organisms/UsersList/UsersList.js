@@ -2,10 +2,9 @@ import UsersListItem from 'components/molecules/UsersListItem/UsersListItem';
 import { StyledList } from './UserList.styles';
 import { StyledTitle } from 'components/atoms/Title/Title';
 import { ViewWrapper } from 'components/molecules/ViewWrapper/ViewWrapper';
+import StyledLoader from 'components/atoms/Loader/Loader';
 
 import { useUsers } from 'hooks/useUsers';
-import Loader from 'react-loader-spinner';
-import StyledLoader from 'components/atoms/Loader/Loader';
 
 const UsersList = () => {
   const { users, deleteUser, isLoading } = useUsers();
@@ -23,7 +22,8 @@ const UsersList = () => {
     <>
       <ViewWrapper>
         <StyledTitle>Students list</StyledTitle>
-        <StyledList>{isLoading ? <StyledLoader /> : usersList}</StyledList>
+        {/* <StyledList>{isLoading ? <StyledLoader /> : usersList}</StyledList> */}
+        <StyledList>{usersList}</StyledList>
       </ViewWrapper>
     </>
   );
